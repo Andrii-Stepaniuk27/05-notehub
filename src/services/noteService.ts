@@ -1,8 +1,8 @@
-import type { Note, NoteTag } from '../types/note';
-import axios from 'axios';
+import type { Note, NoteTag } from "../types/note";
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'https://notehub-public.goit.study/api',
+  baseURL: "https://notehub-public.goit.study/api",
   headers: {
     Authorization: `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`,
   },
@@ -27,7 +27,7 @@ export const fetchNotes = async (
   search?: string,
   perPage = 12,
 ): Promise<FetchNotesResponse> => {
-  const response = await api.get<FetchNotesResponse>('/notes', {
+  const response = await api.get<FetchNotesResponse>("/notes", {
     params: {
       page,
       perPage,
@@ -39,7 +39,7 @@ export const fetchNotes = async (
 };
 
 export const createNote = async (note: CreateNotePayload): Promise<Note> => {
-  const { data } = await api.post<Note>('/notes', note);
+  const { data } = await api.post<Note>("/notes", note);
   return data;
 };
 

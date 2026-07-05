@@ -1,5 +1,5 @@
-import { useState, type ChangeEvent } from 'react';
-import css from './SearchBox.module.css';
+import { useState, type ChangeEvent } from "react";
+import css from "./SearchBox.module.css";
 
 interface SearchBoxProps {
   onChange: (value: string) => void;
@@ -10,8 +10,8 @@ const SearchBox = ({ onChange }: SearchBoxProps) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    setInputValue(newValue); 
-    onChange(newValue);     
+    setInputValue(newValue);
+    onChange(newValue);
   };
 
   return (
