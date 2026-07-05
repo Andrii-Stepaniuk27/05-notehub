@@ -4,7 +4,6 @@ import type { ReactPaginateProps } from "react-paginate";
 import css from "./Pagination.module.css";
 
 type ModuleWithDefault<T> = { default: T };
-
 const ReactPaginate = (
   ReactPaginateModule as unknown as ModuleWithDefault<
     ComponentType<ReactPaginateProps>
@@ -13,8 +12,10 @@ const ReactPaginate = (
 
 interface PaginationProps {
   pageCount: number;
-  onPageChange: (selected: number) => void;
+
   forcePage: number;
+
+  onPageChange: (page: number) => void;
 }
 
 const Pagination = ({
@@ -22,6 +23,10 @@ const Pagination = ({
   onPageChange,
   forcePage,
 }: PaginationProps) => {
+  const handlePageClick = (data: { selected: number }) => {
+    onPageChange(data.selected + 1);
+  };
+
   return (
     <ReactPaginate
       previousLabel={"<"}
@@ -30,9 +35,7 @@ const Pagination = ({
       pageCount={pageCount}
       marginPagesDisplayed={2}
       pageRangeDisplayed={3}
-      onPageChange={(data: { selected: number }) =>
-        onPageChange(data.selected + 1)
-      }
+      onPageChange={handlePageClick}
       containerClassName={css.pagination}
       activeClassName={css.active}
       forcePage={forcePage - 1}
