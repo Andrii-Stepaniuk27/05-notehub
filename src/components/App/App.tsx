@@ -72,17 +72,19 @@ const App = () => {
       </header>
 
       <main>
-        {isLoading && <p style={{ textAlign: 'center' }}>Loading notes...</p>}
-        {isError && <p style={{ textAlign: 'center', color: 'red' }}>Something went wrong!</p>}
+  {isLoading && <p style={{ textAlign: 'center' }}>Loading notes...</p>}
+  {isError && <p style={{ textAlign: 'center', color: 'red' }}>Something went wrong!</p>}
+  
 
-        {data?.data && data.data.length > 0 ? (
-          <NoteList notes={data.data} onDelete={handleDelete} />
-        ) : (
-          !isLoading && !isError && (
-            <p style={{ textAlign: 'center' }}>No notes found.</p>
-          )
-        )}
-      </main>
+  {data?.notes && data.notes.length > 0 ? (
+    <NoteList 
+      notes={data.notes} 
+      onDelete={handleDelete} 
+    />
+  ) : (
+    !isLoading && !isError && <p style={{ textAlign: 'center' }}>No notes found.</p>
+  )}
+</main>
 
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>

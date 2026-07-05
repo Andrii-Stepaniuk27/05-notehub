@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 export interface FetchNotesResponse {
-  data: Note[];
+  notes: Note[];
   total: number;
   page: number;
   perPage: number;
